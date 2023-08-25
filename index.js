@@ -1,9 +1,36 @@
 const fs = require('fs')
+const fsP = require('fs').promises
 const path = require('path');
 
 const { TextractClient, AnalyzeIDCommand } = require("@aws-sdk/client-textract");
+const client = new TextractClient({ region: "us-east-2" });
 
-// get list of sample files in directory, recursively.
+async function copyDirStructure(src, dest) {
+    try {
+        // Check if the source path is a directory
+        const stat = await fsP.stat(src);
+        if (!stat.isDirectory()) {
+            console.log(`${src} is not a directory.`);
+            return;
+        }
+
+        // Create the directory in the destination if it doesn't exist
+        await fsP.mkdir(dest, { recursive: true });
+
+        const entries = await fsP.readdir(src, { withFileTypes: true });
+
+        for (let entry of entries) {
+            if (entry.isDirectory()) {
+                const srcPath = path.join(src, entry.name);
+                const destPath = path.join(dest, entry.name);
+
+                await copyDirStructure(srcPath, destPath);
+            }
+        }
+    } catch (err) {
+        console.error(`Error copying directory structure from ${src} to ${dest}:`, err);
+    }
+}
 
 function getFilesRecursive(directory) {
     let results = [];
@@ -33,37 +60,57 @@ function getFilesRecursive(directory) {
     return results;
 }
 
+async function getTextractResults(file, index, files) {
+  try {
+    const buffer = fs.readFileSync(file.pathName)
+  
+    const input = { // AnalyzeIDRequest
+        DocumentPages: [ // DocumentPages // required
+          { // Document
+            Bytes: buffer
+          },
+        ],
+      };
+    console.log(index+1);
+    const command = new AnalyzeIDCommand(input);
+    setTimeout( () => {
+      client.send(command, (err, data)=> {
+        // write to json file here
+        console.log(`Processing file ${index+1} of ${files.length}: ${file.pathName}.`)
+        if (err) console.error(err)
+        console.log("Data:", data)
+        writeJSONToDir(file, data.IdentityDocuments[0].IdentityDocumentFields)
+      })
+    }, 1500)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 function writeJSONToDir(file, data) {
-  const filePath = path.join("./output_json", file)
+  let filePathSegements = file.dirName.split(path.sep)
+  filePathSegements.shift()
+  filePathSegements = filePathSegements.join(path.sep)
+  const filePath = path.join("./output_json", filePathSegements, `${file.fileName}.json`)
+  console.log("Writing to: ", filePath)
   fs.writeFileSync(filePath, JSON.stringify(data, null, 4), 'utf8', (err) => {
     if (err) console.error('Error writing to file: ', err)
   })
 }
 
-function getTextractResults(file) {
-  const buffer = fs.readFileSync(file.pathName)
+// copy the directory structure of input files into output_json
+copyDirStructure('./input_files', './output_json')
+  .then(() => {
+      console.log('Directory structure has been copied successfully.');
+      // get list of sample files in from input_files, recursively.
+      const files = getFilesRecursive('./input_files');
+      console.log(files);
 
-  const client = new TextractClient({ region: "us-east-2" });
-
-  const input = { // AnalyzeIDRequest
-      DocumentPages: [ // DocumentPages // required
-        { // Document
-          Bytes: buffer
-        },
-      ],
-    };
-  const command = new AnalyzeIDCommand(input);
-  const response = client.send(command, (err, data)=> {
-    // write to json file here
-    // console.log(data.IdentityDocuments[0].IdentityDocumentFields)
-    writeJSONToDir(`${file.fileName}.json`, data.IdentityDocuments[0].IdentityDocumentFields)
+      files.forEach((file, index, files) => {
+        getTextractResults(file, index, files)
+      })
   })
-}
+  .catch(error => {
+      console.error('Error:', error);
+  });
 
-// Usage
-const files = getFilesRecursive('./input_files');
-console.log(files);
-
-// files.forEach( file => getTextractResults(file))
-
-getTextractResults({pathName: "input_files/20210409_110200.jpg", fileName: "20210409_110200"})

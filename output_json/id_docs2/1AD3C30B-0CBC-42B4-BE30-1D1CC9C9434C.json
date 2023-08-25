@@ -1,0 +1,191 @@
+[
+    {
+        "Type": {
+            "Text": "FIRST_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 97.36373901367188,
+            "Text": "CHARONE"
+        }
+    },
+    {
+        "Type": {
+            "Text": "LAST_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 97.11567687988281,
+            "Text": "DESHAZIER"
+        }
+    },
+    {
+        "Type": {
+            "Text": "MIDDLE_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17832946777344,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "SUFFIX"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17208862304688,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "CITY_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 89.45022583007812,
+            "Text": "ANTELOPE"
+        }
+    },
+    {
+        "Type": {
+            "Text": "ZIP_CODE_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 97.61582946777344,
+            "Text": "95843"
+        }
+    },
+    {
+        "Type": {
+            "Text": "STATE_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.08406066894531,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "STATE_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 99.18285369873047,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "DOCUMENT_NUMBER"
+        },
+        "ValueDetection": {
+            "Confidence": 99.13138580322266,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "EXPIRATION_DATE"
+        },
+        "ValueDetection": {
+            "Confidence": 99.23095703125,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "DATE_OF_BIRTH"
+        },
+        "ValueDetection": {
+            "Confidence": 92.85917663574219,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "DATE_OF_ISSUE"
+        },
+        "ValueDetection": {
+            "Confidence": 99.15703582763672,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "ID_TYPE"
+        },
+        "ValueDetection": {
+            "Confidence": 62.21722412109375,
+            "Text": "DRIVER LICENSE BACK"
+        }
+    },
+    {
+        "Type": {
+            "Text": "ENDORSEMENTS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17576599121094,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "VETERAN"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17298126220703,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "RESTRICTIONS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16993713378906,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "CLASS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17232513427734,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 95.71554565429688,
+            "Text": "8611 PEACH BLOSSOM WAY"
+        }
+    },
+    {
+        "Type": {
+            "Text": "COUNTY"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17308807373047,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "PLACE_OF_BIRTH"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17138671875,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "MRZ_CODE"
+        },
+        "ValueDetection": {
+            "Confidence": 97.5195541381836,
+            "Text": ""
+        }
+    }
+]
