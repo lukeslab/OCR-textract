@@ -1,0 +1,203 @@
+[
+    {
+        "Type": {
+            "Text": "FIRST_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 98.31108856201172,
+            "Text": "MANLEY"
+        }
+    },
+    {
+        "Type": {
+            "Text": "LAST_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 93.04356384277344,
+            "Text": "PETIT"
+        }
+    },
+    {
+        "Type": {
+            "Text": "MIDDLE_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 97.68981170654297,
+            "Text": "MANN"
+        }
+    },
+    {
+        "Type": {
+            "Text": "SUFFIX"
+        },
+        "ValueDetection": {
+            "Confidence": 98.95218658447266,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "CITY_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.158935546875,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "ZIP_CODE_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16223907470703,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "STATE_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16218566894531,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "STATE_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16300201416016,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "DOCUMENT_NUMBER"
+        },
+        "ValueDetection": {
+            "Confidence": 96.53715515136719,
+            "Text": "590133491"
+        }
+    },
+    {
+        "Type": {
+            "Text": "EXPIRATION_DATE"
+        },
+        "ValueDetection": {
+            "Confidence": 96.57140350341797,
+            "NormalizedValue": {
+                "Value": "2029-03-05T00:00:00",
+                "ValueType": "Date"
+            },
+            "Text": "05 MAR 2029"
+        }
+    },
+    {
+        "Type": {
+            "Text": "DATE_OF_BIRTH"
+        },
+        "ValueDetection": {
+            "Confidence": 96.39818572998047,
+            "NormalizedValue": {
+                "Value": "1982-04-08T00:00:00",
+                "ValueType": "Date"
+            },
+            "Text": "08 APR 1982"
+        }
+    },
+    {
+        "Type": {
+            "Text": "DATE_OF_ISSUE"
+        },
+        "ValueDetection": {
+            "Confidence": 98.0184555053711,
+            "NormalizedValue": {
+                "Value": "2019-03-06T00:00:00",
+                "ValueType": "Date"
+            },
+            "Text": "06 MAR 2019"
+        }
+    },
+    {
+        "Type": {
+            "Text": "ID_TYPE"
+        },
+        "ValueDetection": {
+            "Confidence": 98.66356658935547,
+            "Text": "PASSPORT"
+        }
+    },
+    {
+        "Type": {
+            "Text": "ENDORSEMENTS"
+        },
+        "ValueDetection": {
+            "Confidence": 97.81234741210938,
+            "Text": "SEE PAGE 27"
+        }
+    },
+    {
+        "Type": {
+            "Text": "VETERAN"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17146301269531,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "RESTRICTIONS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16936492919922,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "CLASS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17205810546875,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.1739273071289,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "COUNTY"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17543029785156,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "PLACE_OF_BIRTH"
+        },
+        "ValueDetection": {
+            "Confidence": 98.06891632080078,
+            "Text": "HAITI"
+        }
+    },
+    {
+        "Type": {
+            "Text": "MRZ_CODE"
+        },
+        "ValueDetection": {
+            "Confidence": 83.49295806884766,
+            "Text": "P<USAPETIT<<MANLEY<MANN<<<<<<<<<<<<<<\n5901334917USA8204088M2903057295533605"
+        }
+    }
+]

@@ -1,0 +1,203 @@
+[
+    {
+        "Type": {
+            "Text": "FIRST_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 96.3027114868164,
+            "Text": "DINIECE"
+        }
+    },
+    {
+        "Type": {
+            "Text": "LAST_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 98.79935455322266,
+            "Text": "HOWELL"
+        }
+    },
+    {
+        "Type": {
+            "Text": "MIDDLE_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 97.49231719970703,
+            "Text": "CANDESE"
+        }
+    },
+    {
+        "Type": {
+            "Text": "SUFFIX"
+        },
+        "ValueDetection": {
+            "Confidence": 99.20902252197266,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "CITY_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.1684341430664,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "ZIP_CODE_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16565704345703,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "STATE_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16094970703125,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "STATE_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16899108886719,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "DOCUMENT_NUMBER"
+        },
+        "ValueDetection": {
+            "Confidence": 97.2344741821289,
+            "Text": "507145101"
+        }
+    },
+    {
+        "Type": {
+            "Text": "EXPIRATION_DATE"
+        },
+        "ValueDetection": {
+            "Confidence": 96.01959991455078,
+            "NormalizedValue": {
+                "Value": "2023-07-24T00:00:00",
+                "ValueType": "Date"
+            },
+            "Text": "24 JUL 2023"
+        }
+    },
+    {
+        "Type": {
+            "Text": "DATE_OF_BIRTH"
+        },
+        "ValueDetection": {
+            "Confidence": 96.43772888183594,
+            "NormalizedValue": {
+                "Value": "1989-10-18T00:00:00",
+                "ValueType": "Date"
+            },
+            "Text": "18 OCT 1989"
+        }
+    },
+    {
+        "Type": {
+            "Text": "DATE_OF_ISSUE"
+        },
+        "ValueDetection": {
+            "Confidence": 97.17576599121094,
+            "NormalizedValue": {
+                "Value": "2013-07-25T00:00:00",
+                "ValueType": "Date"
+            },
+            "Text": "25 JUL 2013"
+        }
+    },
+    {
+        "Type": {
+            "Text": "ID_TYPE"
+        },
+        "ValueDetection": {
+            "Confidence": 98.55243682861328,
+            "Text": "PASSPORT"
+        }
+    },
+    {
+        "Type": {
+            "Text": "ENDORSEMENTS"
+        },
+        "ValueDetection": {
+            "Confidence": 97.78300476074219,
+            "Text": "SEE PAGE 27"
+        }
+    },
+    {
+        "Type": {
+            "Text": "VETERAN"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17206573486328,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "RESTRICTIONS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.162841796875,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "CLASS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17091369628906,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17121124267578,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "COUNTY"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17273712158203,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "PLACE_OF_BIRTH"
+        },
+        "ValueDetection": {
+            "Confidence": 95.00939178466797,
+            "Text": "NEW YORK U.S.A."
+        }
+    },
+    {
+        "Type": {
+            "Text": "MRZ_CODE"
+        },
+        "ValueDetection": {
+            "Confidence": 79.91014862060547,
+            "Text": "P<USAHOWELL<<DINIECE<CANDESE<<<<<<<<<<<<<<<<\n5071451014USA8910185F2307242257168829<713038"
+        }
+    }
+]

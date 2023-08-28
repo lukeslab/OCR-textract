@@ -1,0 +1,195 @@
+[
+    {
+        "Type": {
+            "Text": "FIRST_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16773986816406,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "LAST_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17271423339844,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "MIDDLE_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 99.18109130859375,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "SUFFIX"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17906188964844,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "CITY_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17160034179688,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "ZIP_CODE_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17683410644531,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "STATE_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16388702392578,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "STATE_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17096710205078,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "DOCUMENT_NUMBER"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17594909667969,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "EXPIRATION_DATE"
+        },
+        "ValueDetection": {
+            "Confidence": 99.18074035644531,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "DATE_OF_BIRTH"
+        },
+        "ValueDetection": {
+            "Confidence": 96.95292663574219,
+            "NormalizedValue": {
+                "Value": "1977-07-13T00:00:00",
+                "ValueType": "Date"
+            },
+            "Text": "07/13/1977"
+        }
+    },
+    {
+        "Type": {
+            "Text": "DATE_OF_ISSUE"
+        },
+        "ValueDetection": {
+            "Confidence": 99.1815185546875,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "ID_TYPE"
+        },
+        "ValueDetection": {
+            "Confidence": 97.08010864257812,
+            "Text": "DRIVER LICENSE BACK"
+        }
+    },
+    {
+        "Type": {
+            "Text": "ENDORSEMENTS"
+        },
+        "ValueDetection": {
+            "Confidence": 98.5014419555664,
+            "Text": "NONE"
+        }
+    },
+    {
+        "Type": {
+            "Text": "VETERAN"
+        },
+        "ValueDetection": {
+            "Confidence": 99.18388366699219,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "RESTRICTIONS"
+        },
+        "ValueDetection": {
+            "Confidence": 95.47764587402344,
+            "Text": "B-CORRECTIVE LENSES MUST BE WORN"
+        }
+    },
+    {
+        "Type": {
+            "Text": "CLASS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.18095397949219,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.18348693847656,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "COUNTY"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17925262451172,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "PLACE_OF_BIRTH"
+        },
+        "ValueDetection": {
+            "Confidence": 99.1703872680664,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "MRZ_CODE"
+        },
+        "ValueDetection": {
+            "Confidence": 97.53398132324219,
+            "Text": ""
+        }
+    }
+]

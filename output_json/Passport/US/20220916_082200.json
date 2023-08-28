@@ -1,0 +1,203 @@
+[
+    {
+        "Type": {
+            "Text": "FIRST_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 97.96662139892578,
+            "Text": "PHILIP"
+        }
+    },
+    {
+        "Type": {
+            "Text": "LAST_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 98.15363311767578,
+            "Text": "LAFFEY"
+        }
+    },
+    {
+        "Type": {
+            "Text": "MIDDLE_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 98.49639129638672,
+            "Text": "LOUIS"
+        }
+    },
+    {
+        "Type": {
+            "Text": "SUFFIX"
+        },
+        "ValueDetection": {
+            "Confidence": 99.1608657836914,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "CITY_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16822814941406,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "ZIP_CODE_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17855834960938,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "STATE_IN_ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16220092773438,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "STATE_NAME"
+        },
+        "ValueDetection": {
+            "Confidence": 99.166015625,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "DOCUMENT_NUMBER"
+        },
+        "ValueDetection": {
+            "Confidence": 96.71778106689453,
+            "Text": "548846356"
+        }
+    },
+    {
+        "Type": {
+            "Text": "EXPIRATION_DATE"
+        },
+        "ValueDetection": {
+            "Confidence": 96.78055572509766,
+            "NormalizedValue": {
+                "Value": "2026-08-21T00:00:00",
+                "ValueType": "Date"
+            },
+            "Text": "21 AUG 2026"
+        }
+    },
+    {
+        "Type": {
+            "Text": "DATE_OF_BIRTH"
+        },
+        "ValueDetection": {
+            "Confidence": 96.99119567871094,
+            "NormalizedValue": {
+                "Value": "1980-07-28T00:00:00",
+                "ValueType": "Date"
+            },
+            "Text": "28 JUL 1980"
+        }
+    },
+    {
+        "Type": {
+            "Text": "DATE_OF_ISSUE"
+        },
+        "ValueDetection": {
+            "Confidence": 97.47846221923828,
+            "NormalizedValue": {
+                "Value": "2016-08-22T00:00:00",
+                "ValueType": "Date"
+            },
+            "Text": "22 AUG 2016"
+        }
+    },
+    {
+        "Type": {
+            "Text": "ID_TYPE"
+        },
+        "ValueDetection": {
+            "Confidence": 98.74987030029297,
+            "Text": "PASSPORT"
+        }
+    },
+    {
+        "Type": {
+            "Text": "ENDORSEMENTS"
+        },
+        "ValueDetection": {
+            "Confidence": 97.76654052734375,
+            "Text": "SEE PAGE 27"
+        }
+    },
+    {
+        "Type": {
+            "Text": "VETERAN"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16756439208984,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "RESTRICTIONS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.16516876220703,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "CLASS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17377471923828,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "ADDRESS"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17304992675781,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "COUNTY"
+        },
+        "ValueDetection": {
+            "Confidence": 99.17118835449219,
+            "Text": ""
+        }
+    },
+    {
+        "Type": {
+            "Text": "PLACE_OF_BIRTH"
+        },
+        "ValueDetection": {
+            "Confidence": 93.78922271728516,
+            "Text": "MASSACHUSETTS U.S.A."
+        }
+    },
+    {
+        "Type": {
+            "Text": "MRZ_CODE"
+        },
+        "ValueDetection": {
+            "Confidence": 49.657676696777344,
+            "Text": "P<USAALAFFEY<<PHILIP<LOUIS<<<<<<<<<<<<<<<<<<\n5488463561USA8007289M2608215276743459<499726"
+        }
+    }
+]

@@ -71,19 +71,19 @@ async function getTextractResults(file, index, files) {
           },
         ],
       };
-    console.log(index+1);
     const command = new AnalyzeIDCommand(input);
-    setTimeout( () => {
-      client.send(command, (err, data)=> {
-        // write to json file here
-        console.log(`Processing file ${index+1} of ${files.length}: ${file.pathName}.`)
-        if (err) console.error(err)
-        console.log("Data:", data)
-        writeJSONToDir(file, data.IdentityDocuments[0].IdentityDocumentFields)
-      })
-    }, 1500)
+    console.log(`Processing file ${index+1} of ${files.length}: ${file.pathName}.`)
+    const response = await client.send(command)
+
+    console.log("Data:", response)
+    if (response.$metadata.httpStatusCode === 200) {
+      // write to json file here
+      writeJSONToDir(file, response.IdentityDocuments[0].IdentityDocumentFields)
+      // Log the file as a success???
+    }
   } catch (error) {
-    console.error(error)
+    console.log("Could not extract text:", file.fileName)
+    // Log the file pathname for those that fail, eg ERROR <errorTypeTrhownByTextract> <file.pathName>
   }
 }
 
@@ -107,7 +107,7 @@ copyDirStructure('./input_files', './output_json')
       console.log(files);
 
       files.forEach((file, index, files) => {
-        getTextractResults(file, index, files)
+        setTimeout( getTextractResults, (index+1)*1100, file, index, files)
       })
   })
   .catch(error => {
