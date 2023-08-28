@@ -4,7 +4,7 @@
             "Text": "FIRST_NAME"
         },
         "ValueDetection": {
-            "Confidence": 85.8929672241211,
+            "Confidence": 86.1888427734375,
             "Text": "#J/YUN"
         }
     },
@@ -13,7 +13,7 @@
             "Text": "LAST_NAME"
         },
         "ValueDetection": {
-            "Confidence": 89.97412872314453,
+            "Confidence": 90.3007583618164,
             "Text": "/LU"
         }
     },
@@ -22,7 +22,7 @@
             "Text": "MIDDLE_NAME"
         },
         "ValueDetection": {
-            "Confidence": 99.17156219482422,
+            "Confidence": 99.17153930664062,
             "Text": ""
         }
     },
@@ -31,7 +31,7 @@
             "Text": "SUFFIX"
         },
         "ValueDetection": {
-            "Confidence": 99.17308807373047,
+            "Confidence": 99.17357635498047,
             "Text": ""
         }
     },
@@ -40,7 +40,7 @@
             "Text": "CITY_IN_ADDRESS"
         },
         "ValueDetection": {
-            "Confidence": 99.15522766113281,
+            "Confidence": 99.15543365478516,
             "Text": ""
         }
     },
@@ -49,7 +49,7 @@
             "Text": "ZIP_CODE_IN_ADDRESS"
         },
         "ValueDetection": {
-            "Confidence": 99.17753601074219,
+            "Confidence": 99.17768096923828,
             "Text": ""
         }
     },
@@ -58,7 +58,7 @@
             "Text": "STATE_IN_ADDRESS"
         },
         "ValueDetection": {
-            "Confidence": 99.1550064086914,
+            "Confidence": 99.15572357177734,
             "Text": ""
         }
     },
@@ -67,7 +67,7 @@
             "Text": "STATE_NAME"
         },
         "ValueDetection": {
-            "Confidence": 99.15814971923828,
+            "Confidence": 99.15862274169922,
             "Text": ""
         }
     },
@@ -76,7 +76,7 @@
             "Text": "DOCUMENT_NUMBER"
         },
         "ValueDetection": {
-            "Confidence": 95.28765106201172,
+            "Confidence": 95.25440979003906,
             "Text": "G46977233"
         }
     },
@@ -85,7 +85,7 @@
             "Text": "EXPIRATION_DATE"
         },
         "ValueDetection": {
-            "Confidence": 96.85455322265625,
+            "Confidence": 96.85778045654297,
             "NormalizedValue": {
                 "Value": "2021-01-17T00:00:00",
                 "ValueType": "Date"
@@ -98,7 +98,7 @@
             "Text": "DATE_OF_BIRTH"
         },
         "ValueDetection": {
-            "Confidence": 98.12077331542969,
+            "Confidence": 98.12032318115234,
             "NormalizedValue": {
                 "Value": "1981-05-10T00:00:00",
                 "ValueType": "Date"
@@ -111,7 +111,7 @@
             "Text": "DATE_OF_ISSUE"
         },
         "ValueDetection": {
-            "Confidence": 97.36236572265625,
+            "Confidence": 97.36363983154297,
             "NormalizedValue": {
                 "Value": "2011-01-18T00:00:00",
                 "ValueType": "Date"
@@ -124,7 +124,7 @@
             "Text": "ID_TYPE"
         },
         "ValueDetection": {
-            "Confidence": 98.72052764892578,
+            "Confidence": 98.72325897216797,
             "Text": "PASSPORT"
         }
     },
@@ -133,7 +133,7 @@
             "Text": "ENDORSEMENTS"
         },
         "ValueDetection": {
-            "Confidence": 99.17948913574219,
+            "Confidence": 99.17985534667969,
             "Text": ""
         }
     },
@@ -142,7 +142,7 @@
             "Text": "VETERAN"
         },
         "ValueDetection": {
-            "Confidence": 99.1788101196289,
+            "Confidence": 99.17877197265625,
             "Text": ""
         }
     },
@@ -151,7 +151,7 @@
             "Text": "RESTRICTIONS"
         },
         "ValueDetection": {
-            "Confidence": 99.1653823852539,
+            "Confidence": 99.16574096679688,
             "Text": ""
         }
     },
@@ -160,7 +160,7 @@
             "Text": "CLASS"
         },
         "ValueDetection": {
-            "Confidence": 99.16826629638672,
+            "Confidence": 99.16835021972656,
             "Text": ""
         }
     },
@@ -169,7 +169,7 @@
             "Text": "ADDRESS"
         },
         "ValueDetection": {
-            "Confidence": 99.175537109375,
+            "Confidence": 99.1755142211914,
             "Text": ""
         }
     },
@@ -178,7 +178,7 @@
             "Text": "COUNTY"
         },
         "ValueDetection": {
-            "Confidence": 99.17337036132812,
+            "Confidence": 99.1734390258789,
             "Text": ""
         }
     },
@@ -187,7 +187,7 @@
             "Text": "PLACE_OF_BIRTH"
         },
         "ValueDetection": {
-            "Confidence": 94.5909194946289,
+            "Confidence": 94.57482147216797,
             "Text": "L/SHANGHAI"
         }
     },
@@ -196,7 +196,7 @@
             "Text": "MRZ_CODE"
         },
         "ValueDetection": {
-            "Confidence": 72.84716033935547,
+            "Confidence": 73.3743896484375,
             "Text": "P<CHNLU<<YUN<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\nG469772337CHN8105107F21011741920USAB<<<<<<74"
         }
     }

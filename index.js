@@ -1,6 +1,8 @@
 const fs = require('fs')
 const fsP = require('fs').promises
 const path = require('path');
+const { logEvents } = require('./middleware/logger')
+const { v4: uuid } = require('uuid')
 
 const { TextractClient, AnalyzeIDCommand } = require("@aws-sdk/client-textract");
 const client = new TextractClient({ region: "us-east-2" });
@@ -61,9 +63,11 @@ function getFilesRecursive(directory) {
 }
 
 async function getTextractResults(file, index, files) {
+  const id = uuid()
   try {
+    console.log("id", id)
     const buffer = fs.readFileSync(file.pathName)
-  
+
     const input = { // AnalyzeIDRequest
         DocumentPages: [ // DocumentPages // required
           { // Document
@@ -73,17 +77,19 @@ async function getTextractResults(file, index, files) {
       };
     const command = new AnalyzeIDCommand(input);
     console.log(`Processing file ${index+1} of ${files.length}: ${file.pathName}.`)
+    logEvents(`${id}\tProcessing file ${index+1} of ${files.length}: ${file.pathName}.`, 'requests.log')
     const response = await client.send(command)
 
     console.log("Data:", response)
     if (response.$metadata.httpStatusCode === 200) {
       // write to json file here
       writeJSONToDir(file, response.IdentityDocuments[0].IdentityDocumentFields)
-      // Log the file as a success???
+      logEvents(`${id}\tSUCCESS\t200\t${file.pathName}\t`, 'responses.log')
     }
   } catch (error) {
     console.log("Could not extract text:", file.fileName)
     // Log the file pathname for those that fail, eg ERROR <errorTypeTrhownByTextract> <file.pathName>
+    logEvents(`${id}\tFAIL\t${error.$metadata.httpStatusCode}\t${error.name}\t${file.pathName}\t`, 'responses.log')
   }
 }
 
@@ -97,7 +103,6 @@ function writeJSONToDir(file, data) {
     if (err) console.error('Error writing to file: ', err)
   })
 }
-
 // copy the directory structure of input files into output_json
 copyDirStructure('./input_files', './output_json')
   .then(() => {
@@ -107,7 +112,7 @@ copyDirStructure('./input_files', './output_json')
       console.log(files);
 
       files.forEach((file, index, files) => {
-        setTimeout( getTextractResults, (index+1)*1100, file, index, files)
+        setTimeout( getTextractResults, (index+1)*1500, file, index, files)
       })
   })
   .catch(error => {
