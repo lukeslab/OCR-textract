@@ -1,10 +1,10 @@
+require('dotenv').config()
 const fs = require('fs');
 const { getFilesRecursive } = require('./functions/getFilesRecursive')
 
-// if (fs.existsSync('./output.csv')) {
-//     console.log('output file already exists. Please delete it then retry.')
-//     return
-// }
+const BATCH_NUMBER = ""
+
+if (!BATCH_NUMBER) throw "No batch specified."
 
 const columnHeaders = [
     "Filepath",
@@ -31,23 +31,24 @@ const columnHeaders = [
     "MRZ_CODE_text", "MRZ_CODE_score"
 ];
 
-const outputFiles = getFilesRecursive('./output_json')
+const outputFiles = getFilesRecursive(`./batches/${BATCH_NUMBER}/json`)
+const csvFile = `./batches/${BATCH_NUMBER}/results.csv`
 
 console.log(outputFiles)
 
-fs.appendFileSync('./output.csv', `${columnHeaders.toString()}\n`)
+fs.appendFileSync(csvFile, `${columnHeaders.toString()}\n`)
 
 outputFiles.forEach( file => {
     const fileFields = JSON.parse(fs.readFileSync(file.pathName, 'utf8'))
-    fs.appendFileSync('./output.csv', `${file.pathName},`)
+    fs.appendFileSync(csvFile, `${file.pathName},`)
     fileFields.forEach( field => {
         if (field.Type.Text === "MRZ_CODE") {
            const newMRZ_CODEText = field.ValueDetection.Text.replace(/\n/, "\\n")
-           fs.appendFileSync('./output.csv', `${field.ValueDetection.Text === "" ? "No text" : newMRZ_CODEText}, ${field.ValueDetection.Confidence},`)
+           fs.appendFileSync(csvFile, `${field.ValueDetection.Text === "" ? "No text" : newMRZ_CODEText}, ${field.ValueDetection.Confidence},`)
         } else {
-            fs.appendFileSync('./output.csv', `${field.ValueDetection.Text === "" ? "No text" : field.ValueDetection.Text}, ${field.ValueDetection.Confidence},`)
+            fs.appendFileSync(csvFile, `${field.ValueDetection.Text === "" ? "No text" : field.ValueDetection.Text}, ${field.ValueDetection.Confidence},`)
         }
     })
-    fs.appendFileSync('./output.csv', "\n")
+    fs.appendFileSync(csvFile, "\n")
 })
 
