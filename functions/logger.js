@@ -18,11 +18,4 @@ const logEvents = async (message, logFileName, batchNumber) => {
     }
 }
 
-const logger = (req, res, next) => {
-    // you should probably filter requests that get logged otherwise this wil fill veryq uickly in production
-    logEvents(`${req.method}\t${req.url}\t${req.headers.origin}`, 'reqLog.log')
-    console.log(`${req.method} ${req.path}`)
-    next()
-}
-
-module.exports = { logEvents, logger }
+module.exports = { logEvents }

@@ -1,0 +1,38 @@
+1. Batch processing. 
+    - Allow input of a batch number.
+        -- If batch number entered, specify where to pick up the program using the 'Batch File'.
+        -- If no batch number entered, create a new batch. New batches start from the beginning.
+2. Batch File. 
+    - If no batch number entered, create a directory in the 'batches' directory. The new directory name is the batch number. Create a Batch File in the batch number directory. The batch file will record the status of all 'input_files'. Example:
+[
+    {
+        "filepath": "input_files/dl1.jpeg",
+        "processed": 1,
+        "result": {
+            "status": "success"
+        }
+    },
+    {
+        "filepath": "input_files/dl2.jpeg"
+        "processed": 1,
+        "result": {
+            "status": "failed",
+            "reason": "ProvisionedThroughputExceeded"
+        }
+    },
+    {
+        "filepath": "input_files/dl3.jpg",
+        "processed": 1,
+        "result": {
+            "status": "failed",
+            "reason": "InvalidInputParameters"
+        }
+    },
+    {
+        "filepath": "input_files/passport1.png"
+        "processed": 0
+    }
+]
+3. Input_Files. This directory will hold all files to be sent for extraction. 
+4. Batches. This directory will hold all json responses and logs for a given batch number. Each batch number will have its own subdirectory.
+    4.1 batches/<batchNumber>/json. This directory will hold all json repsonses. It should match the directory structure of the current 'input_files' directory.
