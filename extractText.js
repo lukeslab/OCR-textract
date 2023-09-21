@@ -6,6 +6,7 @@ const { v4: uuid } = require('uuid')
 const { getFilesRecursive } = require('./functions/getFilesRecursive')
 const { TextractClient, AnalyzeIDCommand } = require("@aws-sdk/client-textract");
 const { format } = require('date-fns')
+const { backOff } = require('exponential-backoff')
 
 const batchNumber = format(new Date(), 'yyyyMMdd_HHmmss')
 const outputJsonDir = `./batches/${batchNumber}/json`
@@ -42,9 +43,7 @@ async function copyDirStructure(src, dest) {
 }
 
 async function getTextractResults(file, index, files) {
-  const id = uuid()
-  try {
-    console.log("batchNumber is", batchNumber)
+  // try {
     const buffer = fs.readFileSync(file.pathName)
 
     const input = { // AnalyzeIDRequest
@@ -56,20 +55,15 @@ async function getTextractResults(file, index, files) {
     };
     const command = new AnalyzeIDCommand(input);
     console.log(`Processing file ${index+1} of ${files.length}: ${file.pathName}.`)
-    logEvents(`${id}\tProcessing file ${index+1} of ${files.length}: ${file.pathName}`, 'requests.log', batchNumber)
+    
     const response = await client.send(command)
-
     console.log("Data:", response)
-    if (response.$metadata.httpStatusCode === 200) {
-      // write to json file here
-      writeJSONToDir(file, response.IdentityDocuments[0].IdentityDocumentFields)
-      logEvents(`${id}\tSUCCESS\t200\t${file.pathName}\t`, 'responses.log', batchNumber)
-    }
-  } catch (error) {
-    console.log("Could not extract text:", error)
-    // Log the file pathname for those that fail, eg ERROR <errorTypeTrhownByTextract> <file.pathName>
-    logEvents(`${id}\tFAIL\t${error.$metadata.httpStatusCode}\t${error.name}\t${file.pathName}\t`, 'responses.log', batchNumber)
-  }
+    return response;
+  // } catch (error) {
+  //   console.log("Could not extract text:", error)
+  //   // Log the file pathname for those that fail, eg ERROR <errorTypeTrhownByTextract> <file.pathName>
+  //   logEvents(`${id}\tFAIL\t${error.$metadata.httpStatusCode}\t${error.name}\t${file.pathName}\t`, 'responses.log', batchNumber)
+  // }
 }
 
 function writeJSONToDir(file, data) {
@@ -91,12 +85,42 @@ function writeJSONToDir(file, data) {
 (async () => {
     // copy the directory structure of input files into json
     await copyDirStructure('./input_files', outputJsonDir)
+
     // get list of sample files in from input_files, recursively.
     const files = getFilesRecursive('./input_files');
     console.log(files);
-    // send the files to textract every 1.5 seconds to prevent throttling. This value can change to fit the current aws region.
-    const throttleRate = 1500
-    files.forEach((file, index, files) => {
-      setTimeout( getTextractResults, (index+1)*throttleRate, file, index, files)
-    })
+
+    // send the files to textract. Specifiy THROTTLE_RATE, and MAX_ATTEMPTS
+    // const THROTTLE_RATE = 1500
+    // const MAX_ATTEMPTS = 0;
+
+    const options = {
+      delayFirstAttempt: true,
+      startingDelay: 100,
+      maxAttempts: 5,
+      retry: (error, attemptNumber) => {
+        logEvents(`${id}\tFAIL\t${error.$metadata.httpStatusCode}\t${error.name}\t${file.pathName}\t`, 'responses.log', batchNumber)
+        if (["ProvisionedThroughputExceededException","ThrottlingException","InternalServerError"].includes(error.name)) {
+          logEvents(`${id}\tRetrying, attempt: ${attemptNumber}\t`, 'requests.log', batchNumber)
+          return true;
+        } else return false;
+      }
+    }
+
+    const numFiles = files.length
+    let i = 0;
+    while(i < numFiles) {
+      const id = uuid()
+      logEvents(`${id}\t${files[i].pathName}\tAttempt: 1\tFile ${i+1} of ${numFiles}: `, 'requests.log', batchNumber)
+      const response = backOff(() => getTextractResults(files[i], i, files, id), options)
+      if (response.$metadata.httpStatusCode === 200) {
+        // write to json file here
+        writeJSONToDir(files[i], response.IdentityDocuments[0].IdentityDocumentFields)
+        logEvents(`${id}\tSUCCESS\t200\t${files[i].pathName}\t`, 'responses.log', batchNumber)
+      }
+      i++
+    }
+    // files.forEach((file, index, files) => {
+    //   setTimeout( getTextractResults, (index+1)*THROTTLE_RATE, file, index, files)
+    // })
 })()
