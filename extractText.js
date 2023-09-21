@@ -13,6 +13,11 @@ const outputJsonDir = `./batches/${batchNumber}/json`
 
 const client = new TextractClient({ region: "us-east-2" });
 
+// SETTINGS
+const THROTTLE_RATE = 700
+const INFLIGHT_REQUESTS_MAX = 500;
+let requestsInFlight = 0;
+
 async function copyDirStructure(src, dest) {
   console.log("dest is", dest)
   try {
@@ -42,28 +47,30 @@ async function copyDirStructure(src, dest) {
   }
 }
 
-async function getTextractResults(file, index, files) {
-  // try {
-    const buffer = fs.readFileSync(file.pathName)
+async function getTextractResults(file, index, files, options, id) {
+  const buffer = fs.readFileSync(file.pathName)
 
-    const input = { // AnalyzeIDRequest
-      DocumentPages: [ // DocumentPages // required
-        { // Document
-          Bytes: buffer
-        },
-      ],
-    };
-    const command = new AnalyzeIDCommand(input);
-    console.log(`Processing file ${index+1} of ${files.length}: ${file.pathName}.`)
-    
-    const response = await client.send(command)
-    console.log("Data:", response)
-    return response;
-  // } catch (error) {
-  //   console.log("Could not extract text:", error)
-  //   // Log the file pathname for those that fail, eg ERROR <errorTypeTrhownByTextract> <file.pathName>
-  //   logEvents(`${id}\tFAIL\t${error.$metadata.httpStatusCode}\t${error.name}\t${file.pathName}\t`, 'responses.log', batchNumber)
-  // }
+  const input = { // AnalyzeIDRequest
+    DocumentPages: [ // DocumentPages // required
+      { // Document
+        Bytes: buffer
+      },
+    ],
+  };
+  const command = new AnalyzeIDCommand(input);
+  console.log(`Processing file ${index+1} of ${files.length}: ${file.pathName}.`)
+  
+  requestsInFlight++
+  const response = await backOff( () => client.send(command), options )
+  console.log("Data:", response)
+  if (response.$metadata.httpStatusCode === 200) {
+    // decrement inflight requests
+    requestsInFlight--
+    // write to json file here
+    writeJSONToDir(file, response.IdentityDocuments[0].IdentityDocumentFields)
+    logEvents(`${id}\tSUCCESS\t200\t${file.pathName}\t`, 'responses.log', batchNumber)
+
+  }
 }
 
 function writeJSONToDir(file, data) {
@@ -81,6 +88,9 @@ function writeJSONToDir(file, data) {
   }
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
 
 (async () => {
     // copy the directory structure of input files into json
@@ -91,36 +101,32 @@ function writeJSONToDir(file, data) {
     console.log(files);
 
     // send the files to textract. Specifiy THROTTLE_RATE, and MAX_ATTEMPTS
-    // const THROTTLE_RATE = 1500
-    // const MAX_ATTEMPTS = 0;
-
-    const options = {
-      delayFirstAttempt: true,
-      startingDelay: 100,
-      maxAttempts: 5,
-      retry: (error, attemptNumber) => {
-        logEvents(`${id}\tFAIL\t${error.$metadata.httpStatusCode}\t${error.name}\t${file.pathName}\t`, 'responses.log', batchNumber)
-        if (["ProvisionedThroughputExceededException","ThrottlingException","InternalServerError"].includes(error.name)) {
-          logEvents(`${id}\tRetrying, attempt: ${attemptNumber}\t`, 'requests.log', batchNumber)
-          return true;
-        } else return false;
-      }
-    }
-
     const numFiles = files.length
     let i = 0;
     while(i < numFiles) {
+      await sleep(THROTTLE_RATE)
       const id = uuid()
-      logEvents(`${id}\t${files[i].pathName}\tAttempt: 1\tFile ${i+1} of ${numFiles}: `, 'requests.log', batchNumber)
-      const response = backOff(() => getTextractResults(files[i], i, files, id), options)
-      if (response.$metadata.httpStatusCode === 200) {
-        // write to json file here
-        writeJSONToDir(files[i], response.IdentityDocuments[0].IdentityDocumentFields)
-        logEvents(`${id}\tSUCCESS\t200\t${files[i].pathName}\t`, 'responses.log', batchNumber)
+      const options = {
+        delayFirstAttempt: true,
+        startingDelay: 100,
+        maxAttempts: 5,
+        retry: (error, attemptNumber) => {
+          if (["ProvisionedThroughputExceededException","ThrottlingException","InternalServerError"].includes(error.name)) {
+            logEvents(`${id}\tRETRY: ${attemptNumber}\t${error.$metadata.httpStatusCode}\t${error.name}\t${files[i].pathName}\t`, 'requests.log', batchNumber)
+            return true;
+          } else {
+            logEvents(`${id}\tFAIL\t${error.$metadata.httpStatusCode}\t${error.name}\t${files[i].pathName}\t`, 'responses.log', batchNumber)
+            return false;
+          }
+        }
       }
-      i++
+
+      if (requestsInFlight >= INFLIGHT_REQUESTS_MAX) {
+        console.log('Exceeded maximum inflight requests, waiting for responses.')
+      } else {
+        logEvents(`${id}\tProcessing ${files[i].pathName}\tFile ${i+1} of ${numFiles}: `, 'requests.log', batchNumber)
+        getTextractResults(files[i], i, files, options, id)
+        i++
+      }
     }
-    // files.forEach((file, index, files) => {
-    //   setTimeout( getTextractResults, (index+1)*THROTTLE_RATE, file, index, files)
-    // })
 })()
