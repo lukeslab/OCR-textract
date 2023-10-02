@@ -4,7 +4,7 @@
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
 batches/
-
+input_files/
 # Node artifact files
 node_modules/
 dist/
