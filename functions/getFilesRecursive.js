@@ -20,7 +20,8 @@ function getFilesRecursive(directory) {
             results.push({
               dirName: path.dirname(itemPath),
               pathName: itemPath,
-              fileName: path.basename(itemPath, ext)
+              fileName: path.basename(itemPath, ext),
+              processed: false
             });
         }
     }
